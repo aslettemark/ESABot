@@ -10,8 +10,8 @@ public class NickServCommand extends CommandExecutor {
 
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
-        if(pm && bot.handler.isHerder(sender)) {
-            if(command.split(" ").length == 1) {
+        if (pm && bot.handler.isHerder(sender)) {
+            if (command.split(" ").length == 1) {
                 bot.sendMessage("NickServ", "identify " + bot.nickpass);
                 bot.sendMessage(sender, "Sent message.");
             } else {

@@ -10,8 +10,8 @@ public class TopicMaskCommand extends CommandExecutor {
 
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
-        if(!pm) {
-            if(this.bot.handler.isHerder(sender)) {
+        if (!pm) {
+            if (this.bot.handler.isHerder(sender)) {
                 this.bot.topicmask.remove(channel);
                 this.bot.topicmask.put(channel, command.substring(10));
             }

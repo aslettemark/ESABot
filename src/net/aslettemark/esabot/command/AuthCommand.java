@@ -10,8 +10,8 @@ public class AuthCommand extends CommandExecutor {
 
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
-        if(pm) {
-            if(this.bot.herdpass.contains(command.split(" ")[1])) {
+        if (pm) {
+            if (this.bot.herdpass.contains(command.split(" ")[1])) {
                 this.bot.herders.add(sender);
                 this.bot.sendMessage(sender, "Added to herders");
             }

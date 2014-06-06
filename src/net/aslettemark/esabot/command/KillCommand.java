@@ -10,8 +10,8 @@ public class KillCommand extends CommandExecutor {
 
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
-        if(this.bot.handler.isHerder(sender)) {
-            if(!pm) {
+        if (this.bot.handler.isHerder(sender)) {
+            if (!pm) {
                 bot.sendMessage(channel, "Goodbye");
                 try {
                     Thread.sleep(1100);
@@ -25,14 +25,12 @@ public class KillCommand extends CommandExecutor {
                 bot.dispose();
             }
         } else {
-            if(pm) {
+            if (pm) {
                 bot.sendMessage(sender, "Not allowed");
             } else {
                 bot.sendMessage(channel, "Not allowed");
             }
         }
     }
-    
-    
-    
+
 }

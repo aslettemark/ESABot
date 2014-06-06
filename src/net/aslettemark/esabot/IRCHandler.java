@@ -8,25 +8,27 @@ import net.aslettemark.esabot.command.*;
 import org.jibble.pircbot.*;
 
 public class IRCHandler {
-    
+
     public ESABot bot;
-    
+
     public IRCHandler(ESABot bot) {
         this.bot = bot;
     }
-    
+
     /**
      * Returns wether the specified nick is a bot herder
-     * @param nick The nick to check
+     * 
+     * @param nick
+     *            The nick to check
      * @return
      */
     public boolean isHerder(String nick) {
-        if(bot.herders.contains(nick)) {
+        if (bot.herders.contains(nick)) {
             return true;
         }
         return false;
     }
-    
+
     /**
      * Connects to the network the bot is configured to use
      */
@@ -42,7 +44,7 @@ public class IRCHandler {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * Loads unread notes from the note file.
      */
@@ -57,16 +59,16 @@ public class IRCHandler {
             while ((line = buffer.readLine()) != null) {
                 file.add(line);
             }
-            for(int i=0; i<file.size(); i++) {
+            for (int i = 0; i < file.size(); i++) {
                 line = file.get(i);
-                if(!line.startsWith("  ")) {
+                if (!line.startsWith("  ")) {
                     target = line.replace(System.getProperty("line.separator"), "");
                     bot.notes.put(target, new ArrayList<String>());
                 }
             }
-            for(int i=0; i<file.size(); i++) {
+            for (int i = 0; i < file.size(); i++) {
                 line = file.get(i);
-                if(line.startsWith("  ")) {
+                if (line.startsWith("  ")) {
                     bot.notes.get(target).add(line.replaceFirst("  ", ""));
                 } else {
                     target = line.replace(System.getProperty("line.separator"), "");
@@ -89,10 +91,10 @@ public class IRCHandler {
         try {
             FileWriter fileWriter = new FileWriter(fileName);
             BufferedWriter buffer = new BufferedWriter(fileWriter);
-            for(String target : this.bot.notes.keySet()) {
+            for (String target : this.bot.notes.keySet()) {
                 buffer.write(target);
                 buffer.newLine();
-                for(String note : this.bot.notes.get(target)) {
+                for (String note : this.bot.notes.get(target)) {
                     buffer.write("  " + note);
                     buffer.newLine();
                 }
@@ -112,11 +114,11 @@ public class IRCHandler {
         File notes = new File("data/" + network + "/notes.txt");
         File data = new File("data");
         File net = new File("data/" + network);
-        if(!data.exists()) {
+        if (!data.exists()) {
             data.mkdir();
             net.mkdir();
         }
-        if(notes.exists() && !notes.isDirectory()) {
+        if (notes.exists() && !notes.isDirectory()) {
             System.out.println("Verified notes.txt for " + network);
         } else {
             System.out.println("Could not verify notes.txt for " + network);
@@ -128,25 +130,30 @@ public class IRCHandler {
                 e.printStackTrace();
             }
         }
-        this.bot.files.put("notes", net+"/notes.txt");
+        this.bot.files.put("notes", net + "/notes.txt");
     }
-    
+
     /**
      * Assigns a command to the specified CommandExecutor
-     * @param command Command to assign
-     * @param exec CommandExecutor to assign to
+     * 
+     * @param command
+     *            Command to assign
+     * @param exec
+     *            CommandExecutor to assign to
      */
     public void assignCommand(String command, CommandExecutor exec) {
         this.bot.commandExecutors.put(command, exec);
     }
-    
+
     /**
      * Returns wether the specified nick has any unread notes
-     * @param nick The nick to check
+     * 
+     * @param nick
+     *            The nick to check
      * @return
      */
     public boolean hasNotes(String nick) {
-        if(this.bot.notes.containsKey(nick)) {
+        if (this.bot.notes.containsKey(nick)) {
             return true;
         }
         return false;
