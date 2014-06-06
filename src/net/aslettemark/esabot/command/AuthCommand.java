@@ -16,7 +16,7 @@ public class AuthCommand extends CommandExecutor {
                 this.bot.sendMessage(sender, "Added to herders");
             }
         } else {
-            bot.sendMessage(sender, "Auth is not a public command.");
+            this.bot.sendMessage(sender, "Auth is not a public command.");
         }
     }
 

@@ -10,16 +10,16 @@ public class NickServCommand extends CommandExecutor {
 
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
-        if (pm && bot.handler.isHerder(sender)) {
+        if (pm && this.bot.handler.isHerder(sender)) {
             if (command.split(" ").length == 1) {
-                bot.sendMessage("NickServ", "identify " + bot.nickpass);
-                bot.sendMessage(sender, "Sent message.");
+                this.bot.sendMessage("NickServ", "identify " + this.bot.nickpass);
+                this.bot.sendMessage(sender, "Sent message.");
             } else {
-                bot.sendMessage("NickServ", command.toLowerCase().replaceFirst("nickserv ", ""));
-                bot.sendMessage(sender, "Sent message.");
+                this.bot.sendMessage("NickServ", command.toLowerCase().replaceFirst("nickserv ", ""));
+                this.bot.sendMessage(sender, "Sent message.");
             }
         } else {
-            bot.sendMessage(sender, "Not allowed.");
+            this.bot.sendMessage(sender, "Not allowed.");
         }
     }
 

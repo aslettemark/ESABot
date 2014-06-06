@@ -23,7 +23,7 @@ public class IRCHandler {
      * @return
      */
     public boolean isHerder(String nick) {
-        if (bot.herders.contains(nick)) {
+        if (this.bot.herders.contains(nick)) {
             return true;
         }
         return false;
@@ -36,11 +36,11 @@ public class IRCHandler {
         try {
             this.bot.connectWithNoB(this.bot.network, this.bot.port, null);
             System.out.println("Connected to " + this.bot.network + " on port " + this.bot.port);
-        } catch (NickAlreadyInUseException e) {
+        } catch (final NickAlreadyInUseException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch (final IOException e) {
             e.printStackTrace();
-        } catch (IrcException e) {
+        } catch (final IrcException e) {
             e.printStackTrace();
         }
     }
@@ -49,13 +49,13 @@ public class IRCHandler {
      * Loads unread notes from the note file.
      */
     public void loadNotes() {
-        String fileName = this.bot.files.get("notes");
+        final String fileName = this.bot.files.get("notes");
         String line = null;
         try {
-            FileReader reader = new FileReader(fileName);
-            BufferedReader buffer = new BufferedReader(reader);
+            final FileReader reader = new FileReader(fileName);
+            final BufferedReader buffer = new BufferedReader(reader);
             String target = "";
-            ArrayList<String> file = new ArrayList<String>();
+            final ArrayList<String> file = new ArrayList<String>();
             while ((line = buffer.readLine()) != null) {
                 file.add(line);
             }
@@ -63,22 +63,22 @@ public class IRCHandler {
                 line = file.get(i);
                 if (!line.startsWith("  ")) {
                     target = line.replace(System.getProperty("line.separator"), "");
-                    bot.notes.put(target, new ArrayList<String>());
+                    this.bot.notes.put(target, new ArrayList<String>());
                 }
             }
             for (int i = 0; i < file.size(); i++) {
                 line = file.get(i);
                 if (line.startsWith("  ")) {
-                    bot.notes.get(target).add(line.replaceFirst("  ", ""));
+                    this.bot.notes.get(target).add(line.replaceFirst("  ", ""));
                 } else {
                     target = line.replace(System.getProperty("line.separator"), "");
                 }
             }
             buffer.close();
             reader.close();
-        } catch (FileNotFoundException ex) {
+        } catch (final FileNotFoundException ex) {
             System.out.println("Not able to open file " + fileName);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             System.out.println("Encountered an error reading file " + fileName);
         }
     }
@@ -87,21 +87,21 @@ public class IRCHandler {
      * Updates the note savefile
      */
     public void saveNotes() {
-        String fileName = this.bot.files.get("notes");
+        final String fileName = this.bot.files.get("notes");
         try {
-            FileWriter fileWriter = new FileWriter(fileName);
-            BufferedWriter buffer = new BufferedWriter(fileWriter);
-            for (String target : this.bot.notes.keySet()) {
+            final FileWriter fileWriter = new FileWriter(fileName);
+            final BufferedWriter buffer = new BufferedWriter(fileWriter);
+            for (final String target : this.bot.notes.keySet()) {
                 buffer.write(target);
                 buffer.newLine();
-                for (String note : this.bot.notes.get(target)) {
+                for (final String note : this.bot.notes.get(target)) {
                     buffer.write("  " + note);
                     buffer.newLine();
                 }
             }
             buffer.close();
             fileWriter.close();
-        } catch (IOException e) {
+        } catch (final IOException e) {
             System.out.println("Error writing to file " + fileName);
         }
     }
@@ -110,10 +110,10 @@ public class IRCHandler {
      * Verifies that all needed files exist, and creates them if not
      */
     public void checkFiles() {
-        String network = bot.network.replace(".", "-");
-        File notes = new File("data/" + network + "/notes.txt");
-        File data = new File("data");
-        File net = new File("data/" + network);
+        final String network = this.bot.network.replace(".", "-");
+        final File notes = new File("data/" + network + "/notes.txt");
+        final File data = new File("data");
+        final File net = new File("data/" + network);
         if (!data.exists()) {
             data.mkdir();
             net.mkdir();
@@ -125,7 +125,7 @@ public class IRCHandler {
             try {
                 notes.createNewFile();
                 System.out.println("Created new file: data/" + network + "/notes.txt");
-            } catch (IOException e) {
+            } catch (final IOException e) {
                 System.out.println("Was not able to create notes.txt for " + network);
                 e.printStackTrace();
             }

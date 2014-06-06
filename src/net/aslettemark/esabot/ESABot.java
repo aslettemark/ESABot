@@ -34,7 +34,7 @@ public class ESABot extends PircBot {
         this.nickpass = args[2];
         this.handler = new IRCHandler(this);
         this.setAutoNickChange(true);
-        this.setName(nick);
+        this.setName(this.nick);
         this.setVersion("ESABot v13.3 BUILD 7");
 
         //handle files
@@ -44,16 +44,16 @@ public class ESABot extends PircBot {
         //do the connection, set up automatic variables
         this.handler.doConnect();
         this.channels = args[3].split(",");
-        for (String c : this.channels) {
+        for (final String c : this.channels) {
             this.joinChannel(c);
-            topicmask.put(c, "Welcome to " + c + " | %topic");
+            this.topicmask.put(c, "Welcome to " + c + " | %topic");
         }
-        for (String s : args[4].split(",")) {
-            herdpass.add(s);
+        for (final String s : args[4].split(",")) {
+            this.herdpass.add(s);
         }
 
         //assign commands
-        IRCHandler h = this.handler;
+        final IRCHandler h = this.handler;
         h.assignCommand("kill", new KillCommand(this));
         h.assignCommand("auth", new AuthCommand(this));
         h.assignCommand("topic", new TopicCommand(this));
@@ -73,15 +73,15 @@ public class ESABot extends PircBot {
     public void onMessage(String channel, String sender, String login, String hostname, String message) {
         if (this.handler.hasNotes(sender.toLowerCase())) {
             this.sendMessage(channel, sender + ", you have notes!");
-            for (String s : this.notes.keySet()) {
+            for (final String s : this.notes.keySet()) {
                 if (s.equalsIgnoreCase(sender)) {
                     if (this.notes.get(s).size() > 4) {
                         this.sendMessage(channel, "Too many notes, sending in PM.");
-                        for (String note : this.notes.get(s)) {
+                        for (final String note : this.notes.get(s)) {
                             this.sendMessage(sender, "Note: " + note);
                         }
                     } else {
-                        for (String note : this.notes.get(s)) {
+                        for (final String note : this.notes.get(s)) {
                             this.sendMessage(channel, sender + ": " + note);
                         }
                     }
@@ -90,7 +90,7 @@ public class ESABot extends PircBot {
             this.notes.remove(sender);
             this.handler.saveNotes();
         }
-        if (message.startsWith(nick + ": ")) {
+        if (message.startsWith(this.nick + ": ")) {
             this.commandExecutors.get(message.split(" ")[1]).execute(channel, sender, login, hostname, message.replaceFirst(this.nick + ": ", ""), false);
         } else if (message.startsWith(".")) {
             this.commandExecutors.get(message.split(" ")[0].replaceFirst(".", "")).execute(channel, sender, login, hostname, message.replaceFirst(".", ""), false);
@@ -112,7 +112,7 @@ public class ESABot extends PircBot {
      */
     @Override
     public void onKick(String channel, String kickerNick, String kickerLogin, String kickerHostname, String recipientNick, String reason) {
-        if (herders.contains(recipientNick) && !(kickerNick.equalsIgnoreCase(this.nick))) {
+        if (this.herders.contains(recipientNick) && !(kickerNick.equalsIgnoreCase(this.nick))) {
             this.deOp(channel, kickerNick);
         }
     }
@@ -120,7 +120,7 @@ public class ESABot extends PircBot {
     @Override
     public void onDisconnect() {
         this.handler.doConnect();
-        for (String c : this.channels) {
+        for (final String c : this.channels) {
             this.joinChannel(c);
         }
     }

@@ -13,18 +13,18 @@ public class NoteCommand extends CommandExecutor {
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
         if (command.length() > 2) {
-            String target = command.split(" ")[1].toLowerCase();
-            String note = command.replaceFirst("note " + target + " ", "");
+            final String target = command.split(" ")[1].toLowerCase();
+            final String note = command.replaceFirst("note " + target + " ", "");
             ArrayList<String> notes = new ArrayList<String>();
-            String[] disallowed = { "\n", "\r" };
-            for (String rule : disallowed) {
+            final String[] disallowed = { "\n", "\r" };
+            for (final String rule : disallowed) {
                 if (command.contains(rule)) {
-                    bot.sendMessage(sender, "There was an error in your note.");
+                    this.bot.sendMessage(sender, "There was an error in your note.");
                     return;
                 }
             }
             if (target.length() > 30) {
-                bot.sendMessage(sender, "Invalid nickname.");
+                this.bot.sendMessage(sender, "Invalid nickname.");
                 return;
             }
             if (this.bot.handler.hasNotes(target)) {
@@ -40,9 +40,9 @@ public class NoteCommand extends CommandExecutor {
             } else {
                 this.bot.sendMessage(channel, sender + ": Note noted.");
             }
-            bot.handler.saveNotes();
+            this.bot.handler.saveNotes();
         } else {
-            bot.sendMessage(sender, "Syntax: note <target> <message>");
+            this.bot.sendMessage(sender, "Syntax: note <target> <message>");
         }
     }
 }

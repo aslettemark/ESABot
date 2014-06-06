@@ -12,23 +12,23 @@ public class KillCommand extends CommandExecutor {
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
         if (this.bot.handler.isHerder(sender)) {
             if (!pm) {
-                bot.sendMessage(channel, "Goodbye");
+                this.bot.sendMessage(channel, "Goodbye");
                 try {
                     Thread.sleep(1100);
-                } catch (InterruptedException e) {
+                } catch (final InterruptedException e) {
                     e.printStackTrace();
                 }
-                bot.disconnect();
-                bot.dispose();
+                this.bot.disconnect();
+                this.bot.dispose();
             } else {
-                bot.disconnect();
-                bot.dispose();
+                this.bot.disconnect();
+                this.bot.dispose();
             }
         } else {
             if (pm) {
-                bot.sendMessage(sender, "Not allowed");
+                this.bot.sendMessage(sender, "Not allowed");
             } else {
-                bot.sendMessage(channel, "Not allowed");
+                this.bot.sendMessage(channel, "Not allowed");
             }
         }
     }
