@@ -87,7 +87,7 @@ public class ESABot extends PircBot {
                     }
                 }
             }
-            this.notes.remove(sender);
+            this.notes.remove(sender.toLowerCase());
             this.handler.saveNotes();
         }
         if (message.startsWith(this.nick + ": ")) {
