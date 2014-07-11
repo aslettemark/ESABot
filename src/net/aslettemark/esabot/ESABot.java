@@ -51,6 +51,7 @@ public class ESABot extends PircBot {
         for (final String s : args[4].split(",")) {
             this.herdpass.add(s);
         }
+        this.handler.nickservAuth();
 
         //assign commands
         final IRCHandler h = this.handler;
