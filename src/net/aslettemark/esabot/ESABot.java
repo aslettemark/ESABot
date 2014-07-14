@@ -109,6 +109,11 @@ public class ESABot extends PircBot {
         System.out.println("PM " + sender + " > " + message);
     }
 
+    @Override
+    public void onNotice(String sourceNick, String sourceLogin, String sourceHostname, String target, String notice) {
+        System.out.println("NOTICE " + sourceNick + " > " + notice);
+    }
+
     /**
      * Triggers on kick, used for herder protection.
      */
