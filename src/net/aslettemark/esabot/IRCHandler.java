@@ -158,7 +158,10 @@ public class IRCHandler {
         }
         return false;
     }
-    
+
+    /**
+     * Identifies with NickServ
+     */
     public void nickservAuth() {
         this.bot.sendMessage("NickServ", "identify " + this.bot.nickpass);
         //System.out.println("Identified to NickServ");

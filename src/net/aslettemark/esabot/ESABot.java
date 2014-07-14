@@ -109,6 +109,14 @@ public class ESABot extends PircBot {
         System.out.println("PM " + sender + " > " + message);
     }
 
+    /**
+     * Triggers when the bot receives a notice
+     * @param sourceNick The nick of the user that sent the notice.
+     * @param sourceLogin The login of the user that sent the notice.
+     * @param sourceHostname The hostname of the user that sent the notice.
+     * @param target The target of the notice, be it our nick or a channel name.
+     * @param notice The notice message.
+     */
     @Override
     public void onNotice(String sourceNick, String sourceLogin, String sourceHostname, String target, String notice) {
         System.out.println("NOTICE " + sourceNick + " > " + notice);
@@ -124,6 +132,9 @@ public class ESABot extends PircBot {
         }
     }
 
+    /**
+     * Triggers when the bot disconnects from IRC
+     */
     @Override
     public void onDisconnect() {
         this.handler.doConnect();
