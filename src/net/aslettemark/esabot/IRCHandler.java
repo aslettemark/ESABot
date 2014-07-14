@@ -1,11 +1,11 @@
 package net.aslettemark.esabot;
 
+import net.aslettemark.esabot.command.CommandExecutor;
+import org.jibble.pircbot.IrcException;
+import org.jibble.pircbot.NickAlreadyInUseException;
+
 import java.io.*;
 import java.util.ArrayList;
-
-import net.aslettemark.esabot.command.*;
-
-import org.jibble.pircbot.*;
 
 public class IRCHandler {
 
@@ -17,9 +17,8 @@ public class IRCHandler {
 
     /**
      * Returns wether the specified nick is a bot herder
-     * 
-     * @param nick
-     *            The nick to check
+     *
+     * @param nick The nick to check
      * @return
      */
     public boolean isHerder(String nick) {
@@ -135,11 +134,9 @@ public class IRCHandler {
 
     /**
      * Assigns a command to the specified CommandExecutor
-     * 
-     * @param command
-     *            Command to assign
-     * @param exec
-     *            CommandExecutor to assign to
+     *
+     * @param command Command to assign
+     * @param exec    CommandExecutor to assign to
      */
     public void assignCommand(String command, CommandExecutor exec) {
         this.bot.commandExecutors.put(command, exec);
@@ -147,9 +144,8 @@ public class IRCHandler {
 
     /**
      * Returns wether the specified nick has any unread notes
-     * 
-     * @param nick
-     *            The nick to check
+     *
+     * @param nick The nick to check
      * @return
      */
     public boolean hasNotes(String nick) {

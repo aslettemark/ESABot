@@ -10,7 +10,7 @@ public class PingCommand extends CommandExecutor {
 
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
-        if(pm) {
+        if (pm) {
             return;
         }
         this.bot.sendMessage(channel, sender + ": Pong!");

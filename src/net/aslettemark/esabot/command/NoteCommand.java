@@ -1,8 +1,8 @@
 package net.aslettemark.esabot.command;
 
-import java.util.ArrayList;
-
 import net.aslettemark.esabot.ESABot;
+
+import java.util.ArrayList;
 
 public class NoteCommand extends CommandExecutor {
 
@@ -17,7 +17,7 @@ public class NoteCommand extends CommandExecutor {
             final String[] targets = target.split(",");
             final String note = command.replaceFirst("note " + command.split(" ")[1] + " ", "");
             ArrayList<String> notes;
-            final String[] disallowed = { "\n", "\r" };
+            final String[] disallowed = {"\n", "\r"};
             for (final String rule : disallowed) {
                 if (command.contains(rule)) {
                     this.bot.sendMessage(sender, "There was an error in your note.");

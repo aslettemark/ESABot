@@ -1,11 +1,10 @@
 package net.aslettemark.esabot;
 
+import net.aslettemark.esabot.command.*;
+import org.jibble.pircbot.PircBot;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import net.aslettemark.esabot.command.*;
-
-import org.jibble.pircbot.PircBot;
 
 public class ESABot extends PircBot {
 
@@ -111,11 +110,12 @@ public class ESABot extends PircBot {
 
     /**
      * Triggers when the bot receives a notice
-     * @param sourceNick The nick of the user that sent the notice.
-     * @param sourceLogin The login of the user that sent the notice.
+     *
+     * @param sourceNick     The nick of the user that sent the notice.
+     * @param sourceLogin    The login of the user that sent the notice.
      * @param sourceHostname The hostname of the user that sent the notice.
-     * @param target The target of the notice, be it our nick or a channel name.
-     * @param notice The notice message.
+     * @param target         The target of the notice, be it our nick or a channel name.
+     * @param notice         The notice message.
      */
     @Override
     public void onNotice(String sourceNick, String sourceLogin, String sourceHostname, String target, String notice) {
