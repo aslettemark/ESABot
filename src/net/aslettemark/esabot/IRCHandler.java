@@ -16,10 +16,8 @@ public class IRCHandler {
     }
 
     /**
-     * Returns wether the specified nick is a bot herder
-     *
      * @param nick The nick to check
-     * @return
+     * @return Wether the specified nick is a bot herder
      */
     public boolean isHerder(String nick) {
         if (this.bot.herders.contains(nick)) {
@@ -143,10 +141,8 @@ public class IRCHandler {
     }
 
     /**
-     * Returns wether the specified nick has any unread notes
-     *
      * @param nick The nick to check
-     * @return
+     * @return Wether the specified nick has any unread notes or not
      */
     public boolean hasNotes(String nick) {
         if (this.bot.notes.containsKey(nick)) {
