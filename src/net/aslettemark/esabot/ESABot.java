@@ -1,6 +1,7 @@
 package net.aslettemark.esabot;
 
 import net.aslettemark.esabot.command.*;
+import net.aslettemark.esabot.util.FileUtils;
 import org.jibble.pircbot.PircBot;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class ESABot extends PircBot {
     public HashMap<String, String> files = new HashMap<String, String>();
 
     public IRCHandler handler;
+    public FileUtils fileUtils;
 
     public ESABot(String[] args) {
         //set variables
@@ -32,13 +34,14 @@ public class ESABot extends PircBot {
         this.nick = args[1];
         this.nickpass = args[2];
         this.handler = new IRCHandler(this);
+        this.fileUtils = new FileUtils(this);
         this.setAutoNickChange(true);
         this.setName(this.nick);
         this.setVersion("ESABot v13.3 BUILD 7");
 
         //handle files
-        this.handler.checkFiles();
-        this.handler.loadNotes();
+        this.fileUtils.checkFiles();
+        this.fileUtils.loadNotes();
 
         //do the connection, set up automatic variables
         this.handler.doConnect();
@@ -89,7 +92,7 @@ public class ESABot extends PircBot {
                 }
             }
             this.notes.remove(sender.toLowerCase());
-            this.handler.saveNotes();
+            this.fileUtils.saveNotes();
         }
         if (message.startsWith(this.nick + ": ")) {
             this.commandExecutors.get(message.split(" ")[1]).execute(channel, sender, login, hostname, message.replaceFirst(this.nick + ": ", ""), false);
