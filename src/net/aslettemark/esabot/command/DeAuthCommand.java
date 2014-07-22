@@ -13,6 +13,8 @@ public class DeAuthCommand extends CommandExecutor {
         if (this.bot.handler.isHerder(sender)) {
             this.bot.herders.remove(sender);
             this.bot.sendMessage(sender, "De-Authed");
+        } else {
+            this.bot.sendMessage(sender, "You were not authed.");
         }
     }
 

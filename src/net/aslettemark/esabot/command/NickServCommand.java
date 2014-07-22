@@ -1,6 +1,7 @@
 package net.aslettemark.esabot.command;
 
 import net.aslettemark.esabot.ESABot;
+import net.aslettemark.esabot.Strings;
 
 public class NickServCommand extends CommandExecutor {
 
@@ -19,7 +20,7 @@ public class NickServCommand extends CommandExecutor {
                 this.bot.sendMessage(sender, "Sent message.");
             }
         } else {
-            this.bot.sendMessage(sender, "Not allowed.");
+            this.bot.sendMessage(sender, Strings.ACTION_NOT_ALLOWED);
         }
     }
 

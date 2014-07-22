@@ -1,6 +1,7 @@
 package net.aslettemark.esabot.command;
 
 import net.aslettemark.esabot.ESABot;
+import net.aslettemark.esabot.Strings;
 
 public class KillCommand extends CommandExecutor {
 
@@ -25,11 +26,7 @@ public class KillCommand extends CommandExecutor {
                 this.bot.dispose();
             }
         } else {
-            if (pm) {
-                this.bot.sendMessage(sender, "Not allowed");
-            } else {
-                this.bot.sendMessage(channel, "Not allowed");
-            }
+            this.bot.sendMessage(sender, Strings.ACTION_NOT_ALLOWED);
         }
     }
 

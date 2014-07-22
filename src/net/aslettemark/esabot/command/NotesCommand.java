@@ -1,6 +1,7 @@
 package net.aslettemark.esabot.command;
 
 import net.aslettemark.esabot.ESABot;
+import net.aslettemark.esabot.Strings;
 
 public class NotesCommand extends CommandExecutor {
 
@@ -16,6 +17,8 @@ public class NotesCommand extends CommandExecutor {
                     this.bot.sendMessage(sender, "To " + s + ": " + note);
                 }
             }
+        } else {
+            this.bot.sendMessage(sender, Strings.ACTION_NOT_ALLOWED);
         }
     }
 }
