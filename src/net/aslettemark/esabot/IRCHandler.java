@@ -145,10 +145,7 @@ public class IRCHandler {
      * @return Wether the specified nick has any unread notes or not
      */
     public boolean hasNotes(String nick) {
-        if (this.bot.notes.containsKey(nick)) {
-            return true;
-        }
-        return false;
+        return this.bot.notes.containsKey(nick);
     }
 
     /**
