@@ -5,8 +5,7 @@ import net.aslettemark.esabot.command.CommandExecutor;
 import org.jibble.pircbot.IrcException;
 import org.jibble.pircbot.NickAlreadyInUseException;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.IOException;
 
 public class IRCHandler {
 

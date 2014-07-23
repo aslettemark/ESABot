@@ -1,8 +1,8 @@
 package net.aslettemark.esabot;
 
 import net.aslettemark.esabot.command.*;
-import net.aslettemark.esabot.handler.IRCHandler;
 import net.aslettemark.esabot.handler.FileHandler;
+import net.aslettemark.esabot.handler.IRCHandler;
 import org.jibble.pircbot.PircBot;
 
 import java.util.ArrayList;
