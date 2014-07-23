@@ -46,7 +46,7 @@ public class NoteCommand extends CommandExecutor {
             } else {
                 this.bot.sendMessage(channel, sender + ": Note noted.");
             }
-            this.bot.fileUtils.saveNotes();
+            this.bot.fileHandler.saveNotes();
         } else {
             this.bot.sendMessage(sender, "Syntax: note <target> <message>");
         }

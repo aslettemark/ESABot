@@ -1,15 +1,15 @@
-package net.aslettemark.esabot.util;
+package net.aslettemark.esabot.handler;
 
 import net.aslettemark.esabot.ESABot;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class FileUtils {
+public class FileHandler {
 
     private ESABot bot;
 
-    public FileUtils(ESABot b) {
+    public FileHandler(ESABot b) {
         this.bot = b;
     }
 

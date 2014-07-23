@@ -1,5 +1,6 @@
-package net.aslettemark.esabot;
+package net.aslettemark.esabot.handler;
 
+import net.aslettemark.esabot.ESABot;
 import net.aslettemark.esabot.command.CommandExecutor;
 import org.jibble.pircbot.IrcException;
 import org.jibble.pircbot.NickAlreadyInUseException;
