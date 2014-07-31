@@ -69,6 +69,8 @@ public class ESABot extends PircBot {
         h.assignCommand("nickserv", new NickServCommand(this));
         h.assignCommand("ping", new PingCommand(this));
         h.assignCommand("kick", new KickCommand(this));
+        h.assignCommand("join", new JoinCommand(this));
+        h.assignCommand("part", new PartCommand(this));
     }
 
     /**
