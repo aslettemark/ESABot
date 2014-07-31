@@ -8,6 +8,8 @@ import org.jibble.pircbot.PircBot;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static net.aslettemark.esabot.Strings.*;
+
 public class ESABot extends PircBot {
 
     public String nick;
@@ -38,7 +40,7 @@ public class ESABot extends PircBot {
         this.fileHandler = new FileHandler(this);
         this.setAutoNickChange(true);
         this.setName(this.nick);
-        this.setVersion("ESABot v13.3 BUILD 7");
+        this.setVersion(CTCP_VERSION);
 
         //handle files
         this.fileHandler.checkFiles();
@@ -49,7 +51,7 @@ public class ESABot extends PircBot {
         this.channels = args[3].split(",");
         for (final String c : this.channels) {
             this.joinChannel(c);
-            this.topicmask.put(c, "Welcome to " + c + " | %topic");
+            this.topicmask.put(c, DEFAULT_TOPIC_MASK.replaceAll("%channel", c));
         }
         for (final String s : args[4].split(",")) {
             this.herdpass.add(s);
@@ -117,12 +119,6 @@ public class ESABot extends PircBot {
 
     /**
      * Triggers when the bot receives a notice
-     *
-     * @param sourceNick     The nick of the user that sent the notice.
-     * @param sourceLogin    The login of the user that sent the notice.
-     * @param sourceHostname The hostname of the user that sent the notice.
-     * @param target         The target of the notice, be it our nick or a channel name.
-     * @param notice         The notice message.
      */
     @Override
     public void onNotice(String sourceNick, String sourceLogin, String sourceHostname, String target, String notice) {

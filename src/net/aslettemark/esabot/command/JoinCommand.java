@@ -3,6 +3,8 @@ package net.aslettemark.esabot.command;
 import net.aslettemark.esabot.ESABot;
 import net.aslettemark.esabot.Strings;
 
+import static net.aslettemark.esabot.Strings.DEFAULT_TOPIC_MASK;
+
 public class JoinCommand extends CommandExecutor {
 
     public JoinCommand(ESABot bot) {
@@ -21,6 +23,6 @@ public class JoinCommand extends CommandExecutor {
             return;
         }
         this.bot.joinChannel(split[1]);
-        this.bot.topicmask.put(split[1], "Welcome to " + split[1] + " | %topic");
+        this.bot.topicmask.put(split[1], DEFAULT_TOPIC_MASK.replaceAll("%channel", split[1]));
     }
 }
