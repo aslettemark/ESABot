@@ -4,7 +4,7 @@
 	<groupId>net.aslettemark</groupId>
 	<artifactId>ESABot</artifactId>
     <packaging>jar</packaging>
-	<version>0.1.0</version>
+	<version>0.1.1</version>
 	<name>ESABot</name>
 	<description>Java IRC bot</description>
     <url>https://github.com/aslettemark/ESABot</url>
