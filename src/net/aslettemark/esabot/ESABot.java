@@ -145,5 +145,6 @@ public class ESABot extends PircBot {
         for (final String c : this.channels) {
             this.joinChannel(c);
         }
+        this.handler.nickservAuth();
     }
 }
