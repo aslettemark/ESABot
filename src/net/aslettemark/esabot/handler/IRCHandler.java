@@ -61,7 +61,7 @@ public class IRCHandler {
      * Identifies with NickServ
      */
     public void nickservAuth() {
-        this.bot.sendMessage("NickServ", "identify " + this.bot.nickpass);
+        this.bot.sendMessage("NickServ", "identify " + this.bot.nick + " " + this.bot.nickpass);
     }
 
 }
