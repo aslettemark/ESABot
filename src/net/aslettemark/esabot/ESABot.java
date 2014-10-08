@@ -73,6 +73,7 @@ public class ESABot extends PircBot {
         h.assignCommand("kick", new KickCommand(this));
         h.assignCommand("join", new JoinCommand(this));
         h.assignCommand("part", new PartCommand(this));
+        h.assignCommand("opme", new OpmeCommand(this));
     }
 
     /**
