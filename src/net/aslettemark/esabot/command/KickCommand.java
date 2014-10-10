@@ -13,17 +13,17 @@ public class KickCommand extends Command {
 
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
-        if(!this.bot.handler.isHerder(sender)) {
+        if (!this.bot.handler.isHerder(sender)) {
             this.bot.sendMessage(sender, Strings.ACTION_NOT_ALLOWED);
             return;
         }
         String[] split = command.split(" ");
         int args = 2;
-        if(pm) {
+        if (pm) {
             args = 3;
         }
-        if(split.length < args) {
-            if(pm) {
+        if (split.length < args) {
+            if (pm) {
                 this.bot.sendMessage(sender, "Usage: kick <user> <channel>");
                 return;
             } else {
@@ -31,7 +31,7 @@ public class KickCommand extends Command {
                 return;
             }
         }
-        if(pm) {
+        if (pm) {
             this.bot.kick(split[2], split[1]);
             this.bot.sendMessage(sender, "Attempted to kick " + split[1]);
             return;

@@ -2,7 +2,6 @@ package net.aslettemark.esabot.handler;
 
 import net.aslettemark.esabot.ESABot;
 import net.aslettemark.esabot.command.Command;
-import net.aslettemark.esabot.command.CommandExecutor;
 import org.jibble.pircbot.IrcException;
 import org.jibble.pircbot.NickAlreadyInUseException;
 
@@ -44,7 +43,7 @@ public class IRCHandler {
      * Assigns a command to the specified CommandExecutor
      *
      * @param command Command to assign
-     * @param cmd    CommandExecutor to assign to
+     * @param cmd     CommandExecutor to assign to
      */
     public void assignCommand(Command cmd) {
         this.bot.commands.add(cmd);

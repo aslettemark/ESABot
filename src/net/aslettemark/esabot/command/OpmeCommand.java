@@ -12,16 +12,16 @@ public class OpmeCommand extends Command {
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
         String[] split = command.split(" ");
-        if((!pm && split.length > 1)||(pm && split.length != 2)) {
+        if ((!pm && split.length > 1) || (pm && split.length != 2)) {
             this.bot.sendMessage(sender, Strings.INSUFFICIENT_ARGUMENTS);
             return;
         }
-        if(!this.bot.handler.isHerder(sender)) {
+        if (!this.bot.handler.isHerder(sender)) {
             this.bot.sendMessage(sender, Strings.ACTION_NOT_ALLOWED);
             return;
         }
         String chan = channel;
-        if(pm) {
+        if (pm) {
             chan = split[1];
         }
         this.bot.op(chan, sender);

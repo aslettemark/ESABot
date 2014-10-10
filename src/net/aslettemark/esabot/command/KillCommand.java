@@ -8,6 +8,7 @@ public class KillCommand extends Command {
     public KillCommand(ESABot bot, String command) {
         super(bot, command);
     }
+
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
         if (this.bot.handler.isHerder(sender)) {

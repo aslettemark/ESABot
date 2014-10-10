@@ -1,7 +1,5 @@
 package net.aslettemark.esabot.command;
 
-import net.aslettemark.esabot.ESABot;
-
 public interface CommandExecutor {
 
     /**

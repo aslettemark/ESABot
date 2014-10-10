@@ -8,7 +8,8 @@ import org.jibble.pircbot.PircBot;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static net.aslettemark.esabot.Strings.*;
+import static net.aslettemark.esabot.Strings.CTCP_VERSION;
+import static net.aslettemark.esabot.Strings.DEFAULT_TOPIC_MASK;
 
 public class ESABot extends PircBot {
 
@@ -102,14 +103,14 @@ public class ESABot extends PircBot {
             this.fileHandler.saveNotes();
         }
         if (message.startsWith(this.nick + ": ")) {
-            for(Command cmd : this.commands) {
-                if(cmd.command.equalsIgnoreCase(message.split(" ")[1])) {
+            for (Command cmd : this.commands) {
+                if (cmd.command.equalsIgnoreCase(message.split(" ")[1])) {
                     cmd.execute(channel, sender, login, hostname, message.replaceFirst(this.nick + ": ", ""), false);
                 }
             }
         } else if (message.startsWith(".")) {
-            for(Command cmd : this.commands) {
-                if(cmd.command.equalsIgnoreCase(message.split(" ")[0].replaceFirst(".", ""))) {
+            for (Command cmd : this.commands) {
+                if (cmd.command.equalsIgnoreCase(message.split(" ")[0].replaceFirst(".", ""))) {
                     cmd.execute(channel, sender, login, hostname, message.replaceFirst(".", ""), false);
                 }
             }
@@ -122,8 +123,8 @@ public class ESABot extends PircBot {
      */
     @Override
     public void onPrivateMessage(String sender, String login, String hostname, String message) {
-        for(Command cmd : this.commands) {
-            if(cmd.command.equalsIgnoreCase(message.split(" ")[0])) {
+        for (Command cmd : this.commands) {
+            if (cmd.command.equalsIgnoreCase(message.split(" ")[0])) {
                 cmd.execute(null, sender, login, hostname, message, true);
             }
         }

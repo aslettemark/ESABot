@@ -8,6 +8,7 @@ public class AuthCommand extends Command {
     public AuthCommand(ESABot bot, String command) {
         super(bot, command);
     }
+
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
         if (pm) {

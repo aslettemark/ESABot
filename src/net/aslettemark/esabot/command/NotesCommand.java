@@ -8,6 +8,7 @@ public class NotesCommand extends Command {
     public NotesCommand(ESABot bot, String command) {
         super(bot, command);
     }
+
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
         if (pm && this.bot.handler.isHerder(sender)) {
