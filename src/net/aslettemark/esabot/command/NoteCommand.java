@@ -4,12 +4,11 @@ import net.aslettemark.esabot.ESABot;
 
 import java.util.ArrayList;
 
-public class NoteCommand extends CommandExecutor {
+public class NoteCommand extends Command {
 
-    public NoteCommand(ESABot bot) {
-        super(bot);
+    public NoteCommand(ESABot bot, String command) {
+        super(bot, command);
     }
-
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
         if (command.length() > 2) {

@@ -3,10 +3,10 @@ package net.aslettemark.esabot.command;
 import net.aslettemark.esabot.ESABot;
 import net.aslettemark.esabot.Strings;
 
-public class OpmeCommand extends CommandExecutor {
+public class OpmeCommand extends Command {
 
-    public OpmeCommand(ESABot b) {
-        super(b);
+    public OpmeCommand(ESABot bot, String command) {
+        super(bot, command);
     }
 
     @Override

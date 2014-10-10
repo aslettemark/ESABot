@@ -5,10 +5,10 @@ import net.aslettemark.esabot.Strings;
 
 import static net.aslettemark.esabot.Strings.DEFAULT_TOPIC_MASK;
 
-public class JoinCommand extends CommandExecutor {
+public class JoinCommand extends Command {
 
-    public JoinCommand(ESABot bot) {
-        super(bot);
+    public JoinCommand(ESABot bot, String command) {
+        super(bot, command);
     }
 
     @Override

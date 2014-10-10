@@ -3,10 +3,12 @@ package net.aslettemark.esabot.command;
 import net.aslettemark.esabot.ESABot;
 import net.aslettemark.esabot.Strings;
 
-public class KickCommand extends CommandExecutor {
+public class KickCommand extends Command {
 
-    public KickCommand(ESABot bot) {
-        super(bot);
+    private ESABot bot;
+
+    public KickCommand(ESABot bot, String command) {
+        super(bot, command);
     }
 
     @Override

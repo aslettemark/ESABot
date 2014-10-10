@@ -20,11 +20,11 @@ public class ESABot extends PircBot {
 
     public ArrayList<String> herders = new ArrayList<String>();
     public ArrayList<String> herdpass = new ArrayList<String>();
+    public ArrayList<Command> commands = new ArrayList<Command>();
     //public ArrayList<String> ops = new ArrayList<String>();
 
-    //K = user with note, value = list of notes in format <sender> note
+    //Key = user with note, value = list of notes
     public HashMap<String, ArrayList<String>> notes = new HashMap<String, ArrayList<String>>();
-    public HashMap<String, CommandExecutor> commandExecutors = new HashMap<String, CommandExecutor>();
     public HashMap<String, String> topicmask = new HashMap<String, String>();
     public HashMap<String, String> files = new HashMap<String, String>();
 
@@ -60,20 +60,20 @@ public class ESABot extends PircBot {
 
         //assign commands
         final IRCHandler h = this.handler;
-        h.assignCommand("kill", new KillCommand(this));
-        h.assignCommand("auth", new AuthCommand(this));
-        h.assignCommand("topic", new TopicCommand(this));
-        h.assignCommand("topicmask", new TopicMaskCommand(this));
-        h.assignCommand("herders", new HerdersCommand(this));
-        h.assignCommand("deauth", new DeAuthCommand(this));
-        h.assignCommand("note", new NoteCommand(this));
-        h.assignCommand("notes", new NotesCommand(this));
-        h.assignCommand("nickserv", new NickServCommand(this));
-        h.assignCommand("ping", new PingCommand(this));
-        h.assignCommand("kick", new KickCommand(this));
-        h.assignCommand("join", new JoinCommand(this));
-        h.assignCommand("part", new PartCommand(this));
-        h.assignCommand("opme", new OpmeCommand(this));
+        h.assignCommand(new KillCommand(this, "kill"));
+        h.assignCommand(new AuthCommand(this, "auth"));
+        h.assignCommand(new TopicCommand(this, "topic"));
+        h.assignCommand(new TopicMaskCommand(this, "topicmask"));
+        h.assignCommand(new HerdersCommand(this, "herders"));
+        h.assignCommand(new DeAuthCommand(this, "deauth"));
+        h.assignCommand(new NoteCommand(this, "note"));
+        h.assignCommand(new NotesCommand(this, "notes"));
+        h.assignCommand(new NickServCommand(this, "nickserv"));
+        h.assignCommand(new PingCommand(this, "ping"));
+        h.assignCommand(new KickCommand(this, "kick"));
+        h.assignCommand(new JoinCommand(this, "join"));
+        h.assignCommand(new PartCommand(this, "part"));
+        h.assignCommand(new OpmeCommand(this, "opme"));
     }
 
     /**
@@ -102,9 +102,17 @@ public class ESABot extends PircBot {
             this.fileHandler.saveNotes();
         }
         if (message.startsWith(this.nick + ": ")) {
-            this.commandExecutors.get(message.split(" ")[1]).execute(channel, sender, login, hostname, message.replaceFirst(this.nick + ": ", ""), false);
+            for(Command cmd : this.commands) {
+                if(cmd.command.equalsIgnoreCase(message.split(" ")[1])) {
+                    cmd.execute(channel, sender, login, hostname, message.replaceFirst(this.nick + ": ", ""), false);
+                }
+            }
         } else if (message.startsWith(".")) {
-            this.commandExecutors.get(message.split(" ")[0].replaceFirst(".", "")).execute(channel, sender, login, hostname, message.replaceFirst(".", ""), false);
+            for(Command cmd : this.commands) {
+                if(cmd.command.equalsIgnoreCase(message.split(" ")[0].replaceFirst(".", ""))) {
+                    cmd.execute(channel, sender, login, hostname, message.replaceFirst(".", ""), false);
+                }
+            }
         }
     }
 
@@ -114,7 +122,11 @@ public class ESABot extends PircBot {
      */
     @Override
     public void onPrivateMessage(String sender, String login, String hostname, String message) {
-        this.commandExecutors.get(message.split(" ")[0]).execute(null, sender, login, hostname, message, true);
+        for(Command cmd : this.commands) {
+            if(cmd.command.equalsIgnoreCase(message.split(" ")[0])) {
+                cmd.execute(null, sender, login, hostname, message, true);
+            }
+        }
         System.out.println("PM " + sender + " > " + message);
     }
 

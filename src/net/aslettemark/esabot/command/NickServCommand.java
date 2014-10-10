@@ -3,12 +3,11 @@ package net.aslettemark.esabot.command;
 import net.aslettemark.esabot.ESABot;
 import net.aslettemark.esabot.Strings;
 
-public class NickServCommand extends CommandExecutor {
+public class NickServCommand extends Command {
 
-    public NickServCommand(ESABot bot) {
-        super(bot);
+    public NickServCommand(ESABot bot, String command) {
+        super(bot, command);
     }
-
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
         if (pm && this.bot.handler.isHerder(sender)) {

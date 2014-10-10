@@ -2,10 +2,10 @@ package net.aslettemark.esabot.command;
 
 import net.aslettemark.esabot.ESABot;
 
-public class DeAuthCommand extends CommandExecutor {
+public class DeAuthCommand extends Command {
 
-    public DeAuthCommand(ESABot bot) {
-        super(bot);
+    public DeAuthCommand(ESABot bot, String command) {
+        super(bot, command);
     }
 
     @Override

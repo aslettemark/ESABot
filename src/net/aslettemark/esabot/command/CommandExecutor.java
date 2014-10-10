@@ -2,13 +2,7 @@ package net.aslettemark.esabot.command;
 
 import net.aslettemark.esabot.ESABot;
 
-public abstract class CommandExecutor {
-
-    protected ESABot bot;
-
-    public CommandExecutor(ESABot bot) {
-        this.bot = bot;
-    }
+public interface CommandExecutor {
 
     /**
      * Function that is called when the corresponding command is used

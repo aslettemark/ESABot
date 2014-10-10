@@ -2,12 +2,11 @@ package net.aslettemark.esabot.command;
 
 import net.aslettemark.esabot.ESABot;
 
-public class PingCommand extends CommandExecutor {
+public class PingCommand extends Command {
 
-    public PingCommand(ESABot bot) {
-        super(bot);
+    public PingCommand(ESABot bot, String command) {
+        super(bot, command);
     }
-
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
         if (pm) {

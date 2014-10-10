@@ -3,12 +3,11 @@ package net.aslettemark.esabot.command;
 import net.aslettemark.esabot.ESABot;
 import net.aslettemark.esabot.Strings;
 
-public class TopicCommand extends CommandExecutor {
+public class TopicCommand extends Command {
 
-    public TopicCommand(ESABot bot) {
-        super(bot);
+    public TopicCommand(ESABot bot, String command) {
+        super(bot, command);
     }
-
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
         if (!pm) {

@@ -3,12 +3,11 @@ package net.aslettemark.esabot.command;
 import net.aslettemark.esabot.ESABot;
 import net.aslettemark.esabot.Strings;
 
-public class AuthCommand extends CommandExecutor {
+public class AuthCommand extends Command {
 
-    public AuthCommand(ESABot bot) {
-        super(bot);
+    public AuthCommand(ESABot bot, String command) {
+        super(bot, command);
     }
-
     @Override
     public void execute(String channel, String sender, String login, String hostname, String command, boolean pm) {
         if (pm) {
