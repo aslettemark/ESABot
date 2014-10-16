@@ -75,6 +75,8 @@ public class ESABot extends PircBot {
         h.assignCommand(new JoinCommand(this, "join"));
         h.assignCommand(new PartCommand(this, "part"));
         h.assignCommand(new OpmeCommand(this, "opme"));
+
+        MainClass.takingInput = true;
     }
 
     /**
