@@ -131,6 +131,7 @@ public class ESABot extends PircBot {
             }
         }
         System.out.println("PM " + sender + " > " + message);
+        System.out.print("> ");
     }
 
     /**
@@ -139,6 +140,7 @@ public class ESABot extends PircBot {
     @Override
     public void onNotice(String sourceNick, String sourceLogin, String sourceHostname, String target, String notice) {
         System.out.println("NOTICE " + sourceNick + " > " + notice);
+        System.out.print("> ");
     }
 
     /**
