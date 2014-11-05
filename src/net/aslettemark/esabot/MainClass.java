@@ -28,7 +28,7 @@ public class MainClass {
                     if (split.length > 2) {
                         String msg = StringUtils.combineSplit(2, split, " ");
                         bot.sendMessage(split[1], msg);
-                        print("<" + bot.nick + "> " + msg);
+                        print(split[1] + " <" + bot.nick + "> " + msg);
                     } else {
                         print("msg <#channel/nick> <message>");
                     }

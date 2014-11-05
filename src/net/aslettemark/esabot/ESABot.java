@@ -85,7 +85,7 @@ public class ESABot extends PircBot {
     @Override
     public void onMessage(String channel, String sender, String login, String hostname, String message) {
         if(MainClass.listeningChannels.get(channel)) {
-            MainClass.print("<" + sender + "> " + message);
+            MainClass.print(channel + " <" + sender + "> " + message);
         }
         if (this.handler.hasNotes(sender.toLowerCase())) {
             this.sendMessage(channel, sender + ", you have notes!");
