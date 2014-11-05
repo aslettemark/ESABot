@@ -22,7 +22,6 @@ public class JoinCommand extends Command {
             this.bot.sendMessage(sender, "Usage: join <channel>");
             return;
         }
-        this.bot.joinChannel(split[1]);
-        this.bot.topicmask.put(split[1], DEFAULT_TOPIC_MASK.replaceAll("%channel", split[1]));
+        this.bot.joinChannelAndWorkMagic(split[1]);
     }
 }

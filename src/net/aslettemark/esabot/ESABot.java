@@ -51,8 +51,7 @@ public class ESABot extends PircBot {
         this.handler.doConnect();
         this.channels = args[3].split(",");
         for (final String c : this.channels) {
-            this.joinChannel(c);
-            this.topicmask.put(c, DEFAULT_TOPIC_MASK.replaceAll("%channel", c));
+            this.joinChannelAndWorkMagic(c);
         }
         for (final String s : args[4].split(",")) {
             this.herdpass.add(s);
@@ -85,6 +84,9 @@ public class ESABot extends PircBot {
      */
     @Override
     public void onMessage(String channel, String sender, String login, String hostname, String message) {
+        if(MainClass.listeningChannels.get(channel)) {
+            MainClass.print("<" + sender + "> " + message);
+        }
         if (this.handler.hasNotes(sender.toLowerCase())) {
             this.sendMessage(channel, sender + ", you have notes!");
             for (final String s : this.notes.keySet()) {
@@ -163,5 +165,11 @@ public class ESABot extends PircBot {
             this.joinChannel(c);
         }
         this.handler.nickservAuth();
+    }
+
+    public void joinChannelAndWorkMagic(String c) {
+        this.joinChannel(c);
+        this.topicmask.put(c, DEFAULT_TOPIC_MASK.replaceAll("%channel", c));
+        MainClass.listeningChannels.put(c, false);
     }
 }
