@@ -49,6 +49,8 @@ public class ESABot extends PircBot {
 
         //do the connection, set up automatic variables
         this.handler.doConnect();
+        this.handler.nickservAuth();
+
         this.channels = args[3].split(",");
         for (final String c : this.channels) {
             this.joinChannelAndWorkMagic(c);
@@ -56,7 +58,6 @@ public class ESABot extends PircBot {
         for (final String s : args[4].split(",")) {
             this.herdpass.add(s);
         }
-        this.handler.nickservAuth();
 
         //assign commands
         final IRCHandler h = this.handler;
