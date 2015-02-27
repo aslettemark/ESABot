@@ -31,12 +31,12 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>20041127.091804</version>
+            <version>1.3</version>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
-            <version>1.1</version>
+            <version>1.2</version>
         </dependency>
 	</dependencies>
 
@@ -62,6 +62,7 @@
                     <archive>
                         <manifest>
                             <mainClass>net.aslettemark.esabot.MainClass</mainClass>
+                            <addClasspath>true</addClasspath>
                         </manifest>
                     </archive>
                 </configuration>

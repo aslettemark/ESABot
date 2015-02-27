@@ -8,9 +8,8 @@ About
 ESABot is a project done for fun for use in channels i own, however feel free to use the bot yourself. I take no responsibility for what people decide to use the code for. The bot will not be provided pre-compiled in any foreseeable future.
 
 Dependencies
-  commons-logging
-  httpcore
-  commons-codec
-  httpclient
-  WolframAlpha-1.1.jar
+  commons-logging-1.2
+  httpcore-4.2
+  commons-codec-1.3
+  httpclient-4.2
   All easily available on the internet for free
