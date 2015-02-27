@@ -16,6 +16,8 @@ public class ESABot extends PircBot {
     public String nick;
     public String nickpass;
     public String network;
+    public String wolframAPPID;
+
     public String[] channels;
     public int port = 6667;
 
@@ -37,6 +39,7 @@ public class ESABot extends PircBot {
         this.network = args[0];
         this.nick = args[1];
         this.nickpass = args[2];
+        this.wolframAPPID = args[5];
         this.handler = new IRCHandler(this);
         this.fileHandler = new FileHandler(this);
         this.setAutoNickChange(true);

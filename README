@@ -1,8 +1,16 @@
 ESABot
 
 Usage
-java -jar ESABot.jar <server> <nick> <NickServ pass> <#chann,#els> <herdpass,herdpass2>
+java -jar ESABot.jar <server> <nick> <NickServ pass> <#chann,#els> <herdpass,herdpass2> <wolfram alpha appid>
 Please note that a space in any of the arguments in list form will produce unwanted results.
 
 About
 ESABot is a project done for fun for use in channels i own, however feel free to use the bot yourself. I take no responsibility for what people decide to use the code for. The bot will not be provided pre-compiled in any foreseeable future.
+
+Dependencies
+  commons-logging
+  httpcore
+  commons-codec
+  httpclient
+  WolframAlpha-1.1.jar
+  All easily available on the internet for free
