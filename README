@@ -1,7 +1,8 @@
 ESABot
 
 Usage
-java -jar ESABot.jar <server> <nick> <NickServ pass> <#chann,#els> <herdpass,herdpass2> <wolfram alpha appid>
+java -jar ESABot.jar
+Config file is generated on the first run.
 Please note that a space in any of the arguments in list form will produce unwanted results.
 
 About

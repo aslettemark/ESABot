@@ -12,7 +12,6 @@ public class MainClass {
     public static HashMap<String, Boolean> listeningChannels = new HashMap<>();
 
     public static void main(String[] args) {
-        System.out.print("> ");
         MainClass.bot = new ESABot(args);
         while(takingInput) {
             Scanner scan = new Scanner(System.in);
@@ -53,7 +52,6 @@ public class MainClass {
 
     public static void print(String message) {
         System.out.println(message);
-        System.out.print("> ");
     }
 
 }

@@ -42,8 +42,7 @@ public class IRCHandler {
     /**
      * Assigns a command to the specified CommandExecutor
      *
-     * @param command Command to assign
-     * @param cmd     CommandExecutor to assign to
+     * @param cmd Command to assign
      */
     public void assignCommand(Command cmd) {
         this.bot.commands.add(cmd);
@@ -61,7 +60,11 @@ public class IRCHandler {
      * Identifies with NickServ
      */
     public void nickservAuth() {
-        this.bot.sendMessage("NickServ", "identify " + this.bot.nick + " " + this.bot.nickpass);
+        if(!this.bot.nickpass.equalsIgnoreCase("DONOTAUTH")) {
+            this.bot.sendMessage("NickServ", "identify " + this.bot.nick + " " + this.bot.nickpass);
+        } else {
+            System.out.println("Skipping nickserv auth");
+        }
     }
 
 }

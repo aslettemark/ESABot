@@ -1,10 +1,12 @@
 package net.aslettemark.esabot;
 
 import net.aslettemark.esabot.command.*;
+import net.aslettemark.esabot.config.IRCConfig;
 import net.aslettemark.esabot.handler.FileHandler;
 import net.aslettemark.esabot.handler.IRCHandler;
 import org.jibble.pircbot.PircBot;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,15 +35,19 @@ public class ESABot extends PircBot {
 
     public IRCHandler handler;
     public FileHandler fileHandler;
+    public IRCConfig config;
 
     public ESABot(String[] args) {
         //set variables
-        this.network = args[0];
-        this.nick = args[1];
-        this.nickpass = args[2];
-        this.wolframAPPID = args[5];
         this.handler = new IRCHandler(this);
         this.fileHandler = new FileHandler(this);
+        try {
+            this.config = new IRCConfig(this);
+        } catch (IOException e) {
+            System.out.println("Unable to create config folder/file");
+            e.printStackTrace();
+            this.dispose();
+        }
         this.setAutoNickChange(true);
         this.setName(this.nick);
         this.setVersion(CTCP_VERSION);
@@ -54,12 +60,8 @@ public class ESABot extends PircBot {
         this.handler.doConnect();
         this.handler.nickservAuth();
 
-        this.channels = args[3].split(",");
         for (final String c : this.channels) {
             this.joinChannelAndWorkMagic(c);
-        }
-        for (final String s : args[4].split(",")) {
-            this.herdpass.add(s);
         }
 
         //assign commands
