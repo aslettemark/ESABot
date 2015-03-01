@@ -28,7 +28,7 @@ public class IRCHandler {
      */
     public void doConnect() {
         try {
-            this.bot.connectWithNoB(this.bot.network, this.bot.port, null);
+            this.bot.connect(this.bot.network, this.bot.port);
             System.out.println("Connected to " + this.bot.network + " on port " + this.bot.port);
         } catch (final NickAlreadyInUseException e) {
             e.printStackTrace();
