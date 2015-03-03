@@ -105,6 +105,8 @@ public class ESABot extends PircBot {
         h.assignCommand(new PartCommand(this, "part"));
         h.assignCommand(new OpmeCommand(this, "opme"));
         h.assignCommand(new WolframCommand(this, "wolfram"));
+        h.assignCommand(new WolframCommand(this, "w"));
+        h.assignCommand(new DocsCommand(this, "docs"));
 
         MainClass.takingInput = true;
     }
