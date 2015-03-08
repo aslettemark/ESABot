@@ -74,7 +74,14 @@
             </plugin>
 		</plugins>
 		<resources>
-
+            <resource>
+                <targetPath>config</targetPath>
+                <filtering>true</filtering>
+                <directory>src/resources</directory>
+                <includes>
+                    <include>config.cfg</include>
+                </includes>
+            </resource>
 		</resources>
 	</build>
 </project>
