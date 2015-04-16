@@ -125,4 +125,24 @@ public class FileHandler {
         this.bot.files.put("notes", net + "/notes.txt");
     }
 
+    public InputStream getResource(String fileName) {
+        return getClass().getResourceAsStream(fileName);
+    }
+
+    public ArrayList<String> readFile(InputStream stream) {
+        String line;
+        try {
+            final BufferedReader buffer = new BufferedReader(new InputStreamReader(stream));
+            final ArrayList<String> lines = new ArrayList<>();
+            while ((line = buffer.readLine()) != null) {
+                lines.add(line);
+            }
+            buffer.close();
+            return lines;
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

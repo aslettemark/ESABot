@@ -26,6 +26,7 @@ package net.aslettemark.esabot.config;
 
 import net.aslettemark.esabot.ESABot;
 import net.aslettemark.esabot.handler.ConfigHandler;
+import net.aslettemark.esabot.util.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -54,10 +55,13 @@ public class IRCConfig extends Config{
 
     @Override
     public void populate() {
-        String nl = System.getProperty("line.separator");
+        /*String nl = System.getProperty("line.separator");
         String rnick = "abc" + UUID.randomUUID().toString().substring(0, 6);
         String defaultConfig = "network=irc.esper.net" + nl + "nick=" + rnick + nl + "password=DONOTAUTH" + nl + "channels=#testingbots,#aksels" + nl + "adminpassword=admin" + nl + "wolfram-APPID=<id>";
-        this.getHandler().reWrite(defaultConfig);
+        this.getHandler().reWrite(defaultConfig);*/
+
+        ArrayList<String> defaultConfig = this.bot.fileHandler.readFile(this.bot.fileHandler.getResource("config.cfg"));
+        this.getHandler().reWrite(StringUtils.combineSplit(0, (String[]) defaultConfig.toArray(), System.getProperty("line.separator")));
     }
 
     @Override
